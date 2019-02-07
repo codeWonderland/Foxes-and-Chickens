@@ -113,6 +113,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
                                 <state key="normal" title="Cross"/>
+                                <connections>
+                                    <action selector="cross:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1IA-lC-FiR"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhQ-KE-6mz">
                                 <rect key="frame" x="325" y="437" width="46" height="54"/>
@@ -123,6 +126,26 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="boatL" destination="jKR-u8-X2N" id="FjK-yx-utc"/>
+                        <outlet property="boatLPassengerL" destination="VfC-6q-OUb" id="KFG-8e-H2g"/>
+                        <outlet property="boatLPassengerR" destination="jJE-fP-y08" id="5qo-Hs-ovz"/>
+                        <outlet property="boatR" destination="oPM-Oy-9f0" id="jYv-3u-E8R"/>
+                        <outlet property="boatRPassengerL" destination="gaO-8I-mJa" id="RlF-aR-rzJ"/>
+                        <outlet property="boatRPassengerR" destination="IhQ-KE-6mz" id="h9b-wa-GHq"/>
+                        <outlet property="chickenLOne" destination="lBE-ea-9i0" id="O57-3B-u3m"/>
+                        <outlet property="chickenLThree" destination="BxU-n1-RU9" id="31c-ms-WVZ"/>
+                        <outlet property="chickenLTwo" destination="XDe-Qg-Hp4" id="g7P-Z2-3vB"/>
+                        <outlet property="chickenROne" destination="2JP-b7-hNN" id="7ox-al-gFs"/>
+                        <outlet property="chickenRThree" destination="76J-FM-QVH" id="tKK-is-7Vw"/>
+                        <outlet property="chickenRTwo" destination="tSH-4i-K2o" id="0DI-Js-HBQ"/>
+                        <outlet property="foxLOne" destination="HVb-YE-sZ7" id="bxg-uQ-J4A"/>
+                        <outlet property="foxLThree" destination="Vta-v4-WaY" id="EiY-Tv-KQK"/>
+                        <outlet property="foxLTwo" destination="fzZ-ee-HP7" id="7FR-OD-kao"/>
+                        <outlet property="foxROne" destination="bpF-gp-diR" id="snM-Y3-dwT"/>
+                        <outlet property="foxRThree" destination="RZS-tb-DqT" id="eIh-42-sya"/>
+                        <outlet property="foxRTwo" destination="UaH-0p-vyT" id="4ad-Xd-jzW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
