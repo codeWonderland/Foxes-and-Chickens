@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37697C5E220E764900CAF9DE /* win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37697C5C220E764900CAF9DE /* win.mp3 */; };
+		37697C5F220E764900CAF9DE /* lose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37697C5D220E764900CAF9DE /* lose.mp3 */; };
 		A7BFCB4A220A158D00283D5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BFCB49220A158D00283D5B /* AppDelegate.swift */; };
 		A7BFCB4C220A158D00283D5B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BFCB4B220A158D00283D5B /* ViewController.swift */; };
 		A7BFCB4F220A158D00283D5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7BFCB4D220A158D00283D5B /* Main.storyboard */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		37697C5C220E764900CAF9DE /* win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = win.mp3; sourceTree = "<group>"; };
+		37697C5D220E764900CAF9DE /* lose.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lose.mp3; sourceTree = "<group>"; };
 		A7BFCB46220A158D00283D5B /* Foxes and Chickens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Foxes and Chickens.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7BFCB49220A158D00283D5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7BFCB4B220A158D00283D5B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +58,8 @@
 		A7BFCB48220A158D00283D5B /* Foxes and Chickens */ = {
 			isa = PBXGroup;
 			children = (
+				37697C5D220E764900CAF9DE /* lose.mp3 */,
+				37697C5C220E764900CAF9DE /* win.mp3 */,
 				A7BFCB49220A158D00283D5B /* AppDelegate.swift */,
 				A7BFCB4B220A158D00283D5B /* ViewController.swift */,
 				A7BFCB4D220A158D00283D5B /* Main.storyboard */,
@@ -123,8 +129,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7BFCB54220A158E00283D5B /* LaunchScreen.storyboard in Resources */,
+				37697C5F220E764900CAF9DE /* lose.mp3 in Resources */,
 				A7BFCB51220A158E00283D5B /* Assets.xcassets in Resources */,
 				A7BFCB4F220A158D00283D5B /* Main.storyboard in Resources */,
+				37697C5E220E764900CAF9DE /* win.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

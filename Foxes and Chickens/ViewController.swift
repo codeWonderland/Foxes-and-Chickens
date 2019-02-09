@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
 
@@ -28,73 +29,108 @@ class ViewController: UIViewController {
     @IBOutlet weak var boatRPassengerL: UIButton!
     @IBOutlet weak var boatRPassengerR: UIButton!
     @IBOutlet weak var boatR: UIImageView!
+    @IBOutlet weak var moveCounter: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        setStage()
+
+        // Add OnClicks
+        foxLOne.addTarget(self,
+                          action:#selector(enterLBoat),
+                          for: .touchUpInside)
+        foxLTwo.addTarget(self,
+                          action:#selector(enterLBoat),
+                          for: .touchUpInside)
+        foxLThree.addTarget(self,
+                            action:#selector(enterLBoat),
+                            for: .touchUpInside)
+        chickenLOne.addTarget(self,
+                              action:#selector(enterLBoat),
+                              for: .touchUpInside)
+        chickenLTwo.addTarget(self,
+                              action:#selector(enterLBoat),
+                              for: .touchUpInside)
+        chickenLThree.addTarget(self,
+                                action:#selector(enterLBoat),
+                                for: .touchUpInside)
+        
+        // Right side
+        foxROne.addTarget(self,
+                          action:#selector(enterRBoat),
+                          for: .touchUpInside)
+        foxRTwo.addTarget(self,
+                          action:#selector(enterRBoat),
+                          for: .touchUpInside)
+        foxRThree.addTarget(self,
+                            action:#selector(enterRBoat),
+                            for: .touchUpInside)
+        chickenROne.addTarget(self,
+                              action:#selector(enterRBoat),
+                              for: .touchUpInside)
+        chickenRTwo.addTarget(self,
+                              action:#selector(enterRBoat),
+                              for: .touchUpInside)
+        chickenRThree.addTarget(self,
+                                action:#selector(enterRBoat),
+                                for: .touchUpInside)
+        
+        // Boats
+        boatLPassengerL.addTarget(self,
+                                  action:#selector(leaveBoatSeatL),
+                                  for: .touchUpInside)
+        boatLPassengerR.addTarget(self,
+                                  action:#selector(leaveBoatSeatR),
+                                  for: .touchUpInside)
+        boatRPassengerL.addTarget(self,
+                                  action:#selector(leaveBoatSeatL),
+                                  for: .touchUpInside)
+        boatRPassengerR.addTarget(self,
+                                  action:#selector(leaveBoatSeatR),
+                                  for: .touchUpInside)
+    }
+    
+    func setStage() {
+        foxLOne.isHidden = false
+        foxLTwo.isHidden = false
+        foxLThree.isHidden = false
+        chickenLOne.isHidden = false
+        chickenLTwo.isHidden = false
+        chickenLThree.isHidden = false
         foxROne.isHidden = true
         foxRTwo.isHidden = true
         foxRThree.isHidden = true
         chickenROne.isHidden = true
         chickenRTwo.isHidden = true
         chickenRThree.isHidden = true
+        boatL.isHidden = false
         boatLPassengerL.isHidden = true
         boatLPassengerR.isHidden = true
         boatR.isHidden = true
         boatRPassengerL.isHidden = true
         boatRPassengerR.isHidden = true
-
-        // Add OnClicks
-        foxLOne.addTarget(self, 
-            action:#selector(enterLBoat(_:)), 
-            for: .touchUpInside)
-        foxLTwo.addTarget(self, 
-            action:#selector(enterLBoat(_:)), 
-            for: .touchUpInside)
-        foxLThree.addTarget(self, 
-            action:#selector(enterLBoat(_:)), 
-            for: .touchUpInside)
-        chickenLOne.addTarget(self, 
-            action:#selector(enterLBoat(_:)), 
-            for: .touchUpInside)
-        chickenLTwo.addTarget(self, 
-            action:#selector(enterLBoat(_:)), 
-            for: .touchUpInside)
-        chickenLThree.addTarget(self, 
-            action:#selector(enterLBoat(_:)), 
-            for: .touchUpInside)
+        moveCounter.text = "0"
     }
 
     @IBAction func enterLBoat(sender: UIButton) {
         if (!sender.isHidden && !boatL.isHidden) {
 
             if (boatLPassengerL.isHidden) {
-                boatLPassengerL.setImage(sender.image)
-                sender.isHidden = true
+                // set passenger image
+                boatLPassengerL.setImage(sender.image(for: .normal)!, for: .normal)
                 
-                // Remove all events
-                button.removeTarget(nil, 
-                    action: nill, 
-                    for: .allEvents)
-
-                // Add func to move from boat          
-                boatLPassengerL.addTarget(self, 
-                    action:#selector(leaveBoatSeatL(_:)), 
-                    for: .touchUpInside) 
+                // set sprite visibility
+                sender.isHidden = true
+                boatLPassengerL.isHidden = false
 
             } else if (boatLPassengerR.isHidden) {
-                boatLPassengerR.setImage(sender.image)
+                // set passenger image
+                boatLPassengerR.setImage(sender.image(for: .normal)!, for: .normal)
+                
+                // set sprite visibility
                 sender.isHidden = true
-            
-                // Remove all events
-                button.removeTarget(nil, 
-                    action: nill, 
-                    for: .allEvents)
-
-                // Add func to move from boat          
-                boatLPassengerR.addTarget(self, 
-                    action:#selector(leaveBoatSeatR(_:)), 
-                    for: .touchUpInside) 
+                boatLPassengerR.isHidden = false
 
             } else {
                 // toast("No Room!!")
@@ -106,32 +142,20 @@ class ViewController: UIViewController {
         if (!sender.isHidden && !boatR.isHidden) {
 
             if (boatRPassengerL.isHidden) {
-                boatRPassengerL.setImage(sender.image)
+                // set passenger image
+                boatRPassengerL.setImage(sender.image(for: .normal)!, for: .normal)
+                
+                // set sprite visibility
                 sender.isHidden = true
-
-                // Remove all events
-                button.removeTarget(nil, 
-                    action: nill, 
-                    for: .allEvents)
-
-                // Add func to move from boat          
-                boatRPassengerL.addTarget(self, 
-                    action:#selector(leaveBoatSeatL(_:)), 
-                    for: .touchUpInside) 
+                boatRPassengerL.isHidden = false
             
             } else if (boatRPassengerR.isHidden) {
-                boatRPassengerR.setImage(sender.image)
+                // set passenger image
+                boatRPassengerR.setImage(sender.image(for: .normal)!, for: .normal)
+                    
+                // set sprite visibility
                 sender.isHidden = true
-
-                // Remove all events
-                button.removeTarget(nil, 
-                    action: nill, 
-                    for: .allEvents)
-
-                // Add func to move from boat          
-                boatRPassengerR.addTarget(self, 
-                    action:#selector(leaveBoatSeatR(_:)), 
-                    for: .touchUpInside) 
+                boatRPassengerR.isHidden = false
 
             } else {
                 // toast("No Room!!")
@@ -142,7 +166,7 @@ class ViewController: UIViewController {
     @IBAction func leaveBoatSeatL(sender: UIButton) {
         if (boatL.isHidden) {
             if (!boatRPassengerL.isHidden) {
-                if (sender.image == foxROne.image) {
+                if (sender.image(for: .normal)!.isEqual(foxROne.image(for: .normal))) {
                     if (foxROne.isHidden) {
                         foxROne.isHidden = false
 
@@ -166,7 +190,7 @@ class ViewController: UIViewController {
             }
         } else {
             if (!boatLPassengerL.isHidden) {
-                if (sender.image == foxLOne.image) {
+                if (sender.image(for: .normal)!.isEqual(foxLOne.image(for: .normal)!)) {
                     if (foxLOne.isHidden) {
                         foxLOne.isHidden = false
 
@@ -189,12 +213,14 @@ class ViewController: UIViewController {
                 }
             }
         }
+        
+        sender.isHidden = true
     }
 
     @IBAction func leaveBoatSeatR(sender: UIButton) {
         if (boatL.isHidden) {
             if (!boatRPassengerR.isHidden) {
-                if (sender.image == foxROne.image) {
+                if (sender.image(for: .normal)!.isEqual(foxROne.image(for: .normal)!)) {
                     if (foxROne.isHidden) {
                         foxROne.isHidden = false
 
@@ -218,7 +244,7 @@ class ViewController: UIViewController {
             }
         } else {
             if (!boatLPassengerR.isHidden) {
-                if (sender.image == foxLOne.image) {
+                if (sender.image(for: .normal)!.isEqual(foxLOne.image(for: .normal)!)) {
                     if (foxLOne.isHidden) {
                         foxLOne.isHidden = false
 
@@ -241,13 +267,15 @@ class ViewController: UIViewController {
                 }
             }
         }
+        
+        sender.isHidden = true
     }
     
     @IBAction func cross(_ sender: UIButton) {
-        if (boatL.isHidden) {
+        if (boatR.isHidden) {
             // Set right boat images
-            boatRPassengerL.setImage(boatLPassengerL.image)
-            boatRPassengerR.setImage(boatLPassengerR.image)
+            boatRPassengerL.setImage(boatLPassengerL.image(for: .normal)!, for: .normal)
+            boatRPassengerR.setImage(boatLPassengerR.image(for: .normal)!, for: .normal)
 
             // Set right passenger visibilities
             boatRPassengerL.isHidden = boatLPassengerL.isHidden
@@ -256,22 +284,23 @@ class ViewController: UIViewController {
             // Set left passenger visibilities
             boatLPassengerL.isHidden = true
             boatLPassengerR.isHidden = true
-
-            // Put passengers on the sidelines
-            leaveBoatSeatL(boatRPassengerL)
-            leaveBoatSeatR(boatRPassengerR)
-
+            
             // Set boat visibilities
             boatR.isHidden = false
             boatL.isHidden = true
 
+            // Put passengers on the sidelines
+            leaveBoatSeatL(sender: boatRPassengerL)
+            leaveBoatSeatR(sender: boatRPassengerR)
+
             // Check safety
-            checkSafety(false)
+            checkSafety(left: true)
+            checkSafety(left: false)
         
         } else {
             // Set left boat images
-            boatLPassengerL.setImage(boatRPassengerL.image)
-            boatLPassengerR.setImage(boatRPassengerR.image)
+            boatLPassengerL.setImage(boatRPassengerL.image(for: .normal)!, for: .normal)
+            boatLPassengerR.setImage(boatRPassengerR.image(for: .normal)!, for: .normal)
 
             // Set right passenger visibilities
             boatLPassengerL.isHidden = boatRPassengerL.isHidden
@@ -280,18 +309,21 @@ class ViewController: UIViewController {
             // Set left passenger visibilities
             boatRPassengerL.isHidden = true
             boatRPassengerR.isHidden = true
-
-            // Put passengers on the sidelines
-            leaveBoatSeatL(boatLPassengerL)
-            leaveBoatSeatR(boatLPassengerR)
-
+            
             // Set boat visibilities
             boatL.isHidden = false
             boatR.isHidden = true
 
+            // Put passengers on the sidelines
+            leaveBoatSeatL(sender: boatLPassengerL)
+            leaveBoatSeatR(sender: boatLPassengerR)
+
             // Check safety
-            checkSafety(true)
+            checkSafety(left: true)
+            checkSafety(left: false)
         }
+        
+        moveCounter.text = String(Int(moveCounter.text!)! + 1)
     }
 
     func checkSafety(left: Bool) {
@@ -308,7 +340,7 @@ class ViewController: UIViewController {
             if (!foxLThree.isHidden) {
                 foxes = foxes + 1
             }    
-            if (!ChickenLOne.isHidden) {
+            if (!chickenLOne.isHidden) {
                 chickens = chickens + 1
             }    
             if (!chickenLTwo.isHidden) {
@@ -327,7 +359,7 @@ class ViewController: UIViewController {
             if (!foxRThree.isHidden) {
                 foxes = foxes + 1
             }    
-            if (!ChickenROne.isHidden) {
+            if (!chickenROne.isHidden) {
                 chickens = chickens + 1
             }    
             if (!chickenRTwo.isHidden) {
@@ -336,6 +368,34 @@ class ViewController: UIViewController {
             if (!chickenRThree.isHidden) {
                 chickens = chickens + 1
             }    
+        }
+        
+        if (foxes > chickens && chickens != 0) {
+            playSound(file: "lose", fileType: "mp3")
+            
+        } else if (!left && foxes == 3 && chickens == 3) {
+            playSound(file: "win", fileType: "mp3")
+        }
+    }
+    
+    @IBAction func resetGame(_ sender: Any) {
+        setStage()
+    }
+    
+    // Taken from http://tinyurl.com/y8zpj66f
+    func playSound(file:String,
+                   fileType:String) {
+        var player: AVAudioPlayer?
+        
+        let path = Bundle.main.path(forResource: file, ofType: fileType)
+        let url = URL(fileURLWithPath: path ?? "")
+        
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player?.play()
+            usleep(700000)
+        } catch let error {
+            print(error.localizedDescription)
         }
     }
 }
